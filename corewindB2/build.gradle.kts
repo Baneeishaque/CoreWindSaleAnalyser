@@ -12,6 +12,7 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application.
     application
+    jacoco
 }
 
 repositories {
@@ -31,4 +32,30 @@ dependencies {
 application {
     // Define the main class for the application.
     mainClassName = "coreWindB2SaleAnalyser.App"
+}
+
+val jar by tasks.getting(Jar::class) {
+
+    manifest {
+
+        attributes["Main-Class"] = "accountLedgerCli.cli.AppKt"
+    }
+    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) }) {
+
+        exclude("META-INF/*.RSA", "META-INF/*.SF", "META-INF/*.DSA")
+    }
+}
+
+tasks.jacocoTestReport {
+
+    reports {
+
+        xml.isEnabled = true
+        html.isEnabled = true
+    }
+}
+
+tasks.check {
+
+    dependsOn(tasks.jacocoTestReport)
 }
