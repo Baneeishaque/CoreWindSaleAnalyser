@@ -7,6 +7,7 @@
  */
 
 plugins {
+
     // Apply the java plugin to add support for Java
     java
 
@@ -22,14 +23,18 @@ repositories {
 }
 
 dependencies {
+
     // This dependency is used by the application.
     implementation("com.google.guava:guava:29.0-jre")
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
 
     // Use JUnit test framework
     testImplementation("junit:junit:4.13")
 }
 
 application {
+
     // Define the main class for the application.
     mainClassName = "coreWindASaleAnalyser.App"
 }
