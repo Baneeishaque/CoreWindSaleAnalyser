@@ -30,7 +30,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
 
     // Use JUnit test framework
-    testImplementation("junit:junit:4.13")
+    testImplementation("junit:junit:4.13.2")
 }
 
 application {
